@@ -95,11 +95,20 @@
 
       
       <main class="comments-section">
-        <div class="container">
+        <div class="container mt-4">
+            <!-- Contenedor para la publicación -->
+            <div id="post-content"></div>
+
+            <!-- Contenedor para los comentarios -->
+            <div id="comments-section" class="mt-4"></div>
             <h2>Commentaires</h2>
+            <div id="comments-list"></div>
+
             <div class="comment-form">
-                <textarea class="form-control" rows="4" placeholder="Écrivez votre commentaire ici..."></textarea>
+            <form id="add-comment-form">
+                <textarea class="form-control" id="comment-content" rows="3" placeholder="Écrivez votre commentaire ici..." required></textarea>
                 <button type="submit" class="btn btn-primary mt-3">Envoyer</button>
+            </form>
             </div>
     
             <!-- Lista de comentarios existentes -->
