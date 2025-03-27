@@ -1,32 +1,50 @@
 {
-    "posts": [
-      {
-        "id": 1,
-        "title": "Titre du blog 1",
-        "author": "Auteur 1",
-        "date": "2023-10-01",
-        "content": "Contenu du blog 1..."
-      },
-      {
-        "id": 2,
-        "title": "Titre du blog 2",
-        "author": "Auteur 2",
-        "date": "2023-10-02",
-        "content": "Contenu du blog 2..."
-      }
-    ],
-    "comments": [
-      {
-        "id": 1,
-        "postId": 1,
-        "date": "2023-10-03",
-        "content": "Commentaire 1..."
-      },
-      {
-        "id": 2,
-        "postId": 1,
-        "date": "2023-10-04",
-        "content": "Commentaire 2..."
-      }
-    ]
-  }
+  "posts": [
+    {
+      "id": "1",
+      "title": "Titre du blog 1",
+      "author": "Auteur 1",
+      "date": "2023-10-01",
+      "content": "Contenu du blog 1..."
+    },
+    {
+      "id": "2",
+      "title": "Titre du blog 2",
+      "author": "Auteur 2",
+      "date": "2023-10-02",
+      "content": "Contenu du blog 2..."
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "postId": 1,
+      "date": "2023-10-03",
+      "content": "Commentaire 1..."
+    },
+    {
+      "id": "2",
+      "postId": 1,
+      "date": "2023-10-04",
+      "content": "Commentaire 2..."
+    },
+    {
+      "id": "d711",
+      "postId": "${post.id}",
+      "content": "ola",
+      "date": "2025-03-27"
+    },
+    {
+      "id": "bb49",
+      "postId": null,
+      "content": "ola",
+      "date": "2025-03-27"
+    },
+    {
+      "id": "bfdd",
+      "postId": "${post.id}",
+      "content": "khe",
+      "date": "2025-03-27"
+    }
+  ]
+}

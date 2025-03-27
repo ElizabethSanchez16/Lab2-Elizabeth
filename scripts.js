@@ -1,3 +1,62 @@
+//a ver si este script jala
+$(document).ready(function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const postId = urlParams.get('id');
+    console.log("Post ID:", postId); // Verifica que el ID se obtenga correctamente
+
+    // Cargar publicación
+    $.get(`http://localhost:3000/posts/${postId}`, function(post) {
+        const postHtml = `
+            <h1>${post.title}</h1>
+            <p>${post.content}</p>
+            <p><strong>Auteur:</strong> ${post.author}</p>
+            <p><strong>Date:</strong> ${post.date}</p>
+        `;
+        $("#post-content").html(postHtml);
+    });
+
+    // Cargar comentarios
+    $.get(`http://localhost:3000/comments?postId=${postId}`, function(comments) {
+        const commentsList = $("#comments-list");
+        comments.forEach(comment => {
+            const commentHtml = `
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <p>${comment.content}</p>
+                        <p><small>${comment.date}</small></p>
+                    </div>
+                </div>
+            `;
+            commentsList.append(commentHtml);
+        });
+    });
+
+    // Enviar comentario
+    $("#add-comment-form").submit(function(e) {
+        e.preventDefault();
+        const newComment = {
+            postId: postId,
+            content: $("#comment-content").val(),
+            date: new Date().toISOString().split('T')[0]
+        };
+
+        console.log("Sending data:", JSON.stringify(newComment)); // Verifica los datos enviados
+
+        $.ajax({
+            url: "http://localhost:3000/comments",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(newComment),
+            success: function(response) {
+                console.log("Comment added:", response);
+                location.reload(); // Recargar la página para mostrar el nuevo comentario
+            },
+            error: function(error) {
+                console.error("Error adding comment:", error);
+            }
+        });
+    });
+});
 
 $(document).ready(function() {
     // Cargar publicaciones al iniciar la página
